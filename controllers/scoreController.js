@@ -27,7 +27,7 @@ router.get("/:id", (req, res) => {
 });
 
 //create Score
-router.post("/",withAuth, (req,res) => {
+router.post("/",withAuth,(req,res) => {
   console.log(req.user)
   Score.create({
     level1Score:req.body.level1Score,
