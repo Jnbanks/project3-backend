@@ -1,13 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const {User} = require('../models');
+const {User,Score} = require('../models');
 const jwt = require("jsonwebtoken")
 require("dotenv").config()
 const bcrypt = require("bcrypt");
 const {withAuth} = require("../utils/tokenAuth")
 
 router.get("/",(req,res)=>{
-    User.findAll()
+    User.findAll({
+        include:[Score]
+    })
     .then(users=>{
         res.json(users)
     }).catch(err=>{

@@ -17,18 +17,6 @@ User.init({
         validate:{
             len:[8]
         }
-    },
-    level1Score:{
-        type:DataTypes.NUMBER,
-        allowNull:true,
-    },
-    level2Score:{
-        type:DataTypes.NUMBER,
-        allowNull:true,
-    },
-    level3Score:{
-        type:DataTypes.NUMBER,
-        allowNull:true,
     }
 },{
     sequelize,
