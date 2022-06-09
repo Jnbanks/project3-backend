@@ -21,7 +21,9 @@ router.get("/verifyToken",withAuth,(req,res)=>{
     res.json({userId:req.user})
 })
 router.get("/:id",(req,res)=>{
-    User.findByPk(req.params.id)
+    User.findByPk(req.params.id,{
+        include:[Score]
+    })
     .then(user=>{
         if(!user) {
             return res.status(404).json({msg:"no record found!"})
@@ -38,7 +40,7 @@ router.post("/",(req,res)=>{
         const token = jwt.sign({
             userId:newUser.id
         },process.env.JWT_SECRET,{
-            expiresIn:"6h"
+            expiresIn:"24h"
         })
         res.json({
             user:newUser,
@@ -63,7 +65,7 @@ router.post("/login",(req,res)=>{
             const token = jwt.sign({
                 userId:foundUser.id
             },process.env.JWT_SECRET,{
-                expiresIn:"6h"
+                expiresIn:"24h"
             })
             return res.json({
                 user:foundUser,
