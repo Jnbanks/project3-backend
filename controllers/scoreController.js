@@ -27,13 +27,13 @@ router.get("/:id", (req, res) => {
 });
 
 //create Score
-router.post("/",withAuth, (req,res) => {
+router.post("/",  (req,res) => {
   console.log(req.user)
   Score.create({
     level1Score:req.body.level1Score,
-    UserId:req.user
+    userId:req.user
   })
-    .then(newScore => {
+    .then((newScore) => {
       res.json(newScore);
     })
     .catch(err => {

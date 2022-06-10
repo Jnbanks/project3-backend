@@ -21,7 +21,9 @@ router.get("/verifyToken",withAuth,(req,res)=>{
     res.json({userId:req.user})
 })
 router.get("/:id",(req,res)=>{
-    User.findByPk(req.params.id)
+    User.findByPk(req.params.id),{
+        include:[Score]
+    }
     .then(user=>{
         if(!user) {
             return res.status(404).json({msg:"no record found!"})

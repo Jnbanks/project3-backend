@@ -17,7 +17,11 @@ User.init({
         validate:{
             len:[8]
         }
-    }
+    },
+    id:{
+        type:DataTypes.INTEGER,
+        primaryKey: true,
+    },
 },{
     sequelize,
     hooks:{
