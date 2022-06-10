@@ -4,9 +4,12 @@ const sequelize = require('../config/connection');
 class Score extends Model {}
 
 Score.init({
-    level1Score:{
+    score:{
         type:DataTypes.INTEGER,
         allowNull:true,
+    },
+    level:{
+        type:DataTypes.INTEGER,
     }
 }, {
     sequelize
