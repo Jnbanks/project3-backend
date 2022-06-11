@@ -34,7 +34,7 @@ router.post("/",withAuth,(req,res) => {
     level:req.body.level,
     UserId:req.user
   })
-    .then(newScore => {
+    .then((newScore) => {
       res.json(newScore);
     })
     .catch(err => {

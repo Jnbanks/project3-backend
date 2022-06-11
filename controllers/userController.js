@@ -5,7 +5,6 @@ const jwt = require("jsonwebtoken")
 require("dotenv").config()
 const bcrypt = require("bcrypt");
 const {withAuth} = require("../utils/tokenAuth")
-
 router.get("/",(req,res)=>{
     User.findAll({
         include:[Score]
@@ -34,7 +33,6 @@ router.get("/:id",(req,res)=>{
         res.status(500).json({msg:"an error occured",err})
     })
 })
-
 router.post("/",(req,res)=>{
     User.create(req.body).then(newUser=>{
         const token = jwt.sign({
@@ -51,7 +49,6 @@ router.post("/",(req,res)=>{
         res.status(500).json({msg:"an error occured",err})
     })
 })
-
 router.post("/login",(req,res)=>{
     User.findOne({
         where:{
@@ -75,5 +72,4 @@ router.post("/login",(req,res)=>{
         return res.status(401).json({msg:"invalid login credentials"})
     })
 })
-
 module.exports = router;
